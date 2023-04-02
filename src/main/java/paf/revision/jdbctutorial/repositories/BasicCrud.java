@@ -12,13 +12,13 @@ public class BasicCrud {
     private JdbcTemplate template;
 
     //! QUERY STATEMENTS
-    //* Useful for finding a list of single value items strings/integers/float
+    //todo-> Useful for finding a list of single value items strings/integers/float
     public <T> List<T> findOneField (String selectField, String fromTable, Class<T> classType){
         String SQL = "select "+selectField+" from "+fromTable;
         return template.queryForList(SQL, classType);
     }
     
-    //* able to accept multiple fields for equals operation in sql statement
+    //todo-> able to accept multiple fields for equals operation in sql statement
     public <T> List<T> findItemBy (String selectField, String fromTable, String where, String equalsTo, Class<T> classType){
         String SQL="";
         try{
@@ -30,38 +30,53 @@ public class BasicCrud {
             return template.query(SQL, BeanPropertyRowMapper.newInstance(classType));
         }        
     }
-    //* open ended where statement to include other operations
+    //todo-> open ended where statement to include other operations
     public <T> List<T> findItems (String selectField, String fromTable, String where, Class<T> classType){
         String SQL = "select "+selectField+" from "+fromTable+" where "+where;
         return template.query(SQL, BeanPropertyRowMapper.newInstance(classType));
     }
 
-    //* finds all items and maps to model object
+    //todo-> finds all items and maps to model object
     public <T> List<T> findall(String fromTable,Class<T> classType){
         return findOneField("*", fromTable, classType);
     }
-    //* Generic object
+    //todo-> Generic object, works as long as model is made
     public <T> List<T> findAnything (String SQL, Class<T> classType){
         return template.query(SQL, BeanPropertyRowMapper.newInstance(classType));
-    }
-
-    
-    //* takes any and every SQL statements and returns a map
+    }    
+    //todo-> takes any and every SQL statements and returns a map
     public List<Map<String,Object>> genericMap(String SQL){
         return template.queryForList(SQL);       
     }
 
     //! INSERT STATEMENTS
-    //* insert items with partial information
+    //todo-> insert items with partial information
     public int insert(String tableName, String fieldsList, String valuesList){        
         String SQL = "insert into "+tableName+"("+ fieldsList+") values("+valuesList+")";
         return template.update(SQL);
     }
     
-    //* insert items with all information, auto increment id can be input as null
+    //todo-> insert items with all information, auto increment id can be input as null
     public int insert(String tableName, String valuesList){
         String SQL = "insert into "+tableName+" values("+valuesList+")";
         return template.update(SQL);
+    }
+
+    //! UPDATE STATEMENTS
+    //todo-> open ended where statements
+    public int updateBy(String tableName, String set, String where){
+        String SQL = "update "+tableName+" set "+set+" where "+where;
+        return template.update(SQL);
+    }
+    //todo-> Update by specfic field name
+    public int updateBy(String tableName, String set, String where, String equalsTo){
+        try{
+            String SQL = "update "+tableName+" set "+set+" where "+where+"="+equalsTo;
+            return template.update(SQL);
+        } catch(Exception ex){
+            String SQL = "update "+tableName+" set "+set+" where "+where+"='"+equalsTo+"'";
+            return template.update(SQL);            
+        }
     }
     
     //! DELETE STATMENTS

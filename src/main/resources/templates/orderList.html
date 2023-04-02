@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>id</th> 
+            <th>employeeId</th> 
+            <th>customerId</th> 
+            <th>orderDate;</th> 
+            <th>shippedDate;</th> 
+            <th>shipperId</th> 
+            <th>shipName;</th> 
+            <th>shipAddress</th> 
+            <th>shipCity;</th> 
+            <th>shipStateProvince;</th> 
+            <th>shipZipPostalCode;</th> 
+            <th>shipCountryRegion;</th> 
+            <th>shippingFee</th> 
+            <th>taxes</th> 
+            <th>paymentType;</th> 
+            <th>paidDate;</th> 
+            <th>notes</th> 
+            <th>taxRate</th> 
+            <th>taxStatusId</th> 
+            <th>statusOd</th> 
+        </thead>
+        <tr th:each="order:${orders}">
+            <td th:text="${order.id}"></td> 
+            <td th:text="${order.employeeId}"></td> 
+            <td th:text="${order.customerId}"></td> 
+            <td th:text="${order.orderDate}"></td> 
+            <td th:text="${order.shippedDate}"></td> 
+            <!-- <td th:text="${order.shipperId}"></td>  -->
+            <td th:text="${order.shipName}"></td> 
+            <td th:text="${order.shipAddress}"></td> 
+            <td th:text="${order.shipCity}"></td> 
+            <td th:text="${order.shipStateProvince}"></td> 
+            <td th:text="${order.shipZipPostalCode}"></td> 
+            <td th:text="${order.shipCountryRegion}"></td> 
+            <td th:text="${order.shippingFee}"></td> 
+            <td th:text="${order.taxes}"></td> 
+            <td th:text="${order.paymentType}"></td> 
+            <td th:text="${order.paidDate}"></td> 
+            <td th:text="${order.notes}"></td> 
+            <td th:text="${order.taxRate}"></td> 
+            <!-- <td th:text="${order.taxStatusId}"></td>  -->
+            <td th:text="${order.statusOd}"></td> 
+        </tr>
+    </table>
+    
+</body>
+</html>

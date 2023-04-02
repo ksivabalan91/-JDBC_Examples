@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>id</th> 
+            <th>company</th> 
+            <th>lastName</th> 
+            <th>firstName</th> 
+            <th>emailAddress</th> 
+            <th>jobTitle</th> 
+            <th>businessPhone</th> 
+            <th>homePhone</th> 
+            <th>mobilePhone</th> 
+            <th>faxNumber</th> 
+            <th>address</th> 
+            <th>city</th> 
+            <th>stateProvince</th> 
+            <th>zipPostalCode</th> 
+            <th>countryRegion</th> 
+            <th>webPage</th> 
+            <th>notes</th> 
+        </thead>
+        <tr th:each="cust:${customers}">
+            <td th:text="${cust.id}"></td> 
+            <td th:text="${cust.company}"></td> 
+            <td th:text="${cust.lastName}"></td> 
+            <td th:text="${cust.firstName}"></td> 
+            <td th:text="${cust.emailAddress}"></td> 
+            <td th:text="${cust.jobTitle}"></td> 
+            <td th:text="${cust.businessPhone}"></td> 
+            <td th:text="${cust.homePhone}"></td> 
+            <td th:text="${cust.mobilePhone}"></td> 
+            <td th:text="${cust.faxNumber}"></td> 
+            <td th:text="${cust.address}"></td> 
+            <td th:text="${cust.city}"></td> 
+            <td th:text="${cust.stateProvince}"></td> 
+            <td th:text="${cust.zipPostalCode}"></td> 
+            <td th:text="${cust.countryRegion}"></td> 
+            <td th:text="${cust.webPage}"></td> 
+            <td th:text="${cust.notes}"></td> 
+        </tr>
+    </table>
+    
+</body>
+</html>
